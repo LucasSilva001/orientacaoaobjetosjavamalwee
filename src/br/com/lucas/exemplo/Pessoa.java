@@ -1,4 +1,4 @@
-package br.com.lucas;
+package br.com.lucas.exemplo;
 
 public class Pessoa {
 	
@@ -29,4 +29,13 @@ public class Pessoa {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+
+	@Override
+	public String toString() {
+		return "Nome: " + nome
+				+ "\nNascimento: " + anoDeNascimento 
+				+ "\nSexo: " + sexo;
+	}
+	
+	
 }
