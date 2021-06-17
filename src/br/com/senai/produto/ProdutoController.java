@@ -15,26 +15,28 @@ public class ProdutoController {
 	    Produto produto = new Produto();
 	    
 	    System.out.println("--- CADASTRAR PRODUTO ---");
+	    
 	    System.out.println("Informe o nome do produto:");
-	    tec.nextLine();
-	    produto.setNomeDoproduto(tec.nextLine());
+	    produto.setNomeDoproduto(tec.next());
 	    
 	    System.out.println("Informe o valor unitário do produto: ");
 	    produto.setValorUnitarioDoProduto(tec.nextDouble());
 	    
 	    System.out.println("Insira a quantidade do produto: ");
 	    produto.setQuantidadeDoProduto(tec.nextInt());
-	    produto.setValorTotalDoProduto(produto.getValorTotalDoProduto() * produto.getQuantidadeDoProduto());
-	   	   	    
+	    
+	   	produto.setValorTotalDoProduto(produto.getValorUnitarioDoProduto() * produto.getQuantidadeDoProduto());  
 		return produto;
 		
 	}
 	
 	public List<Produto> ListarProdutos(List<Produto> produtos){
+		
 		System.out.println("--- Produtos cadastrados ---");
-		System.out.printf("| %15s | %6.2s | %3s | \n ", "Nome", "ValorUnitário", "Quantidade");
+		System.out.printf("| %2s | %10s | %13s | %10s | %9s | \n ", "Id", "Nome", "ValorUnitário", "Quantidade", "Total" );
 		for(int i = 0; i < produtos.size(); i++) {
-			System.out.printf("| %15s | %6.2f | %3s | \n ",
+			System.out.printf("| %2d | %10s | R$ %7.2f | %13d | %6.2f \n",
+					i,
 					produtos.get(i).getNomeDoproduto(),
 					produtos.get(i).getValorUnitarioDoProduto(),
 					produtos.get(i).getQuantidadeDoProduto(),
@@ -43,5 +45,64 @@ public class ProdutoController {
 		}
 		return produtos;
 	}
-
+	
+	public List<Produto> editarProduto(List<Produto> produtos) {
+		
+		Produto produto = new Produto();
+		ListarProdutos(produtos);
+		
+		System.out.println("Informe o ID do produto para editar: ");
+		int idProduto = tec.nextInt();
+		
+		System.out.println("1) Nome do produto");
+		System.out.println("2) Quantidade de produto");
+		System.out.println("3) Valor unitário do produto");
+		System.out.println("Informe o campo para ser editado");
+		int opcao = tec.nextInt();
+		
+		switch (opcao) {
+		case 1:
+			System.out.println("--- EDITAR O NOME DO PRODUTO ---");
+			System.out.println("Informe o novo nome do produto: ");
+			produto.setNomeDoproduto(tec.next());
+			
+			produto.setQuantidadeDoProduto(produtos.get(idProduto).getQuantidadeDoProduto());
+			produto.setValorUnitarioDoProduto(produtos.get(idProduto).getValorUnitarioDoProduto());
+			produto.setValorTotalDoProduto(produtos.get(idProduto).getValorTotalDoProduto());
+			
+			produtos.set(idProduto, produto);
+			
+			break;
+		
+		case 2:
+			System.out.println("--- EDITAR A QUANTIDADE DE PRODUTO ---");
+			System.out.println("Informe a nova quantidade: ");
+			produto.setQuantidadeDoProduto(tec.nextInt());
+			
+			produto.setNomeDoproduto(produtos.get(idProduto).getNomeDoproduto());
+			produto.setValorUnitarioDoProduto(produtos.get(idProduto).getValorUnitarioDoProduto());
+			produto.setValorTotalDoProduto(produtos.get(idProduto).getValorTotalDoProduto());
+			
+			produtos.set(idProduto, produto);
+			break;
+		
+		case 3:
+			System.out.println("--- EDITAR O VALOR UNITÁRIO DO PRODUTO ---");
+			System.out.println("Informe o novo valor: ");
+			produto.setValorUnitarioDoProduto(produtos.get(idProduto).getValorUnitarioDoProduto());
+			
+			produto.setNomeDoproduto(produtos.get(idProduto).getNomeDoproduto());
+			produto.setQuantidadeDoProduto(produtos.get(idProduto).getQuantidadeDoProduto());
+			produto.setValorTotalDoProduto(produtos.get(idProduto).getValorTotalDoProduto());
+			
+			produtos.set(idProduto, produto);
+			break;
+		
+		default:
+			System.out.println("Opção inválida!");
+			break;
+		}
+		
+		return produtos;
+	}
 }

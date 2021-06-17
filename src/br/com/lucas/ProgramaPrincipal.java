@@ -22,7 +22,7 @@ public class ProgramaPrincipal {
 		boolean sair = false;
 
 		do  {
-			pessoaController.menu();
+			menu();
 
 			int opcao = pessoaController.leOpcao();
 
@@ -46,6 +46,10 @@ public class ProgramaPrincipal {
 			case 4:
 				produtoController.ListarProdutos(produtos);
 				break;
+			
+			case 5:
+				produtoController.editarProduto(produtos);
+				break;
 
 			default:
 				System.out.println("Opção inválida!");
@@ -56,6 +60,16 @@ public class ProgramaPrincipal {
 
 		System.out.println("Sistema finalizado!");
 
+	}
+	public static void menu() {
+		System.out.println("\n--- Menu ---");
+		System.out.println("1) Cadastrar pessoa");
+		System.out.println("2) Listar pessoas cadastradas");
+		System.out.println("3) Cadastrar produto");
+		System.out.println("4) Listar produtos cadastrados");
+		System.out.println("5) Editar produto");
+		System.out.println("9) Sair do sistema");
+		System.out.println("---------------------");
 	}
 
 }
