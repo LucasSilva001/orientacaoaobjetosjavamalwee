@@ -16,7 +16,6 @@ public class Produto {
 	
 	public Produto(String nomeDoproduto, double valorUnitarioDoProduto, int quantidadeDoProduto,
 			double valorTotalDoProduto) {
-		super();
 		this.nomeDoproduto = nomeDoproduto;
 		this.valorUnitarioDoProduto = valorUnitarioDoProduto;
 		this.quantidadeDoProduto = quantidadeDoProduto;
