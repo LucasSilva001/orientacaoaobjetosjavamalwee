@@ -84,6 +84,26 @@ public class VendaController {
 		
 		
 		return venda;
+		
 	}
 
+		public void menu() {
+			System.out.println("\nMenu");
+			System.out.println("1) Cadastrar");
+			System.out.println("2) Listar");
+			System.out.println("3) Excluir");
+			
+			System.out.println("Insira o campo desejado: ");
+			int opcao = tec.nextInt();
+			
+			switch(opcao) {
+			
+			case 1:
+			
+			case 2:
+			
+			case 3:
+				
+			}
+		}
 }
