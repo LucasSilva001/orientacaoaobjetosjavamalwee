@@ -1,11 +1,14 @@
 package br.com.lucas.pessoa;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.lucas.ProgramaPrincipal;
 import br.com.senai.produto.Produto;
 
 public class PessoaController {
+	
 	
 	private Scanner tec;
 	
@@ -415,5 +418,31 @@ public class PessoaController {
 		pessoas.remove(idPessoa);
 		
 	}
-	}
-
+	public void menu() {	
+		
+		System.out.println("\nMenu");
+		System.out.println("1) Cadastrar");
+		System.out.println("2) Listar");
+		System.out.println("3) Excluir");
+		int opcao = tec.nextInt();
+		
+		boolean sair = true;
+		
+		do {
+			switch(opcao) {
+		
+		case 1:
+			pessoas.add(cadastrarPessoa());
+			
+			break;
+			
+		case 2:
+			
+			break;
+		
+		case 3:
+			
+		}
+	} while(!sair);
+}
+}

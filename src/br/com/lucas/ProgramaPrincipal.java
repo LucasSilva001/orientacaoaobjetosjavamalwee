@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import br.com.lucas.pessoa.Pessoa;
 import br.com.lucas.pessoa.PessoaController;
+import br.com.senai.loja.Venda;
+import br.com.senai.loja.VendaController;
 import br.com.senai.produto.Produto;
 import br.com.senai.produto.ProdutoController;
 
@@ -14,9 +16,11 @@ public class ProgramaPrincipal {
 	public static void main(String[] args) {
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		List<Produto> produtos = new ArrayList<Produto>();
-
+		List<Venda> vendas = new ArrayList<Venda>();
+		
 		PessoaController pessoaController = new PessoaController();
 		ProdutoController produtoController = new ProdutoController();
+		VendaController vendacontroller = new VendaController();
 		
 		Produto produto = new Produto(
 				"Abacate",
@@ -29,7 +33,7 @@ public class ProgramaPrincipal {
 		boolean sair = false;
 
 		do  {
-			menu();
+			ProgramaPrincipal.menu();
 
 			int opcao = pessoaController.leOpcao();
 
@@ -40,10 +44,6 @@ public class ProgramaPrincipal {
 				
 			case 2:
 				pessoaController.ListarPessoas(pessoas);
-				break;
-				
-			case 9:
-				sair = true;
 				break;
 			
 			case 3:
@@ -70,6 +70,20 @@ public class ProgramaPrincipal {
 				pessoaController.excluirPessoa(pessoas);
 				break;
 				
+			case 9:
+				vendacontroller.listarVenda(vendas);
+				break;
+	
+			case 10:
+				vendas.add(vendacontroller.cadastrarVenda(produtos, pessoas));
+				break;
+				
+			case 11:
+				sair = true;
+				break;
+			
+				
+				
 			default:
 				System.out.println("Opção inválida!");
 				break;
@@ -80,18 +94,20 @@ public class ProgramaPrincipal {
 		System.out.println("Sistema finalizado!");
 
 	}
+	public void pessoaMenu () {
+		System.out.println("");
+	}
 	public static void menu() {
 		System.out.println("\n--- Menu ---");
-		System.out.println("1) Cadastrar pessoa");
-		System.out.println("2) Listar pessoas cadastradas");
-		System.out.println("3) Cadastrar produto");
-		System.out.println("4) Listar produtos cadastrados");
-		System.out.println("5) Editar produto");
-		System.out.println("6) Excluir produto");
-		System.out.println("7) Editar pessoa");
-		System.out.println("8) Excluir pessoa");
-		System.out.println("9) Sair do sistema");
-		System.out.println("---------------------");
+		System.out.println("1) Pessoa");
+		System.out.println("2) Produto");
+		System.out.println("3) Venda");
+		System.out.println("4) Sair do sistema");
+		Scanner tec = new Scanner(System.in);
+		
+		System.out.println("Insira a opção desejada: ");
+		int opcao = tec.nextInt();
+	
 	}
 
 }

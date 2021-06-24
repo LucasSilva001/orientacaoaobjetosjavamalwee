@@ -133,4 +133,23 @@ public class ProdutoController {
 		}
 		produtos.remove(idProduto);
 	}
+	public void menu() {
+		System.out.println("\nMenu");
+		System.out.println("Cadastrar");
+		System.out.println("Listar");
+		System.out.println("Excluir");
+		
+		int opcao = tec.nextInt();
+		
+		switch(opcao) {
+		
+		case 1:
+			cadastrarProduto()
+		case 2:
+			
+		case 3:
+			
+		}
+		
+	}
 }
